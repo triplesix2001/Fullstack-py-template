@@ -1,0 +1,5 @@
+Makes .exe with console for debugging and includes all files in /web
+    pyinstaller --onefile --console --add-data "web/*;web/" main.py
+
+Makes .exe with no console and includes all files in /web
+    pyinstaller --onefile --noconsole --add-data "web/*;web/" main.py
