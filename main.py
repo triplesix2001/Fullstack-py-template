@@ -70,7 +70,7 @@ def main():
     eel.init("web")
     '''Function to be run as admin'''
     
-    eel.start("WindowsStuff.html", port=666, size=(1366, 768))
+    eel.start("Windows/WindowsStuff.html", port=666, size=(1366, 768))
 
 
 # Checks and asks for admin
