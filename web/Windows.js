@@ -41,7 +41,7 @@ function showMessage(message) {
       // Remove the "active" class after 5 seconds
       setTimeout(function() {
         popup.classList.remove('active');
-      }, 8000);
+      }, 3000);
     }, 100); // Adjust the delay as needed
   }
   
@@ -54,9 +54,16 @@ document.getElementById('data-collection-btn').addEventListener('click', functio
   });
   
   // Telemetry Button
-  document.getElementById('telemetry-btn').addEventListener('click', function() {
-    showMessage('error');
-    eel.my_python_function(); // Handle telemetry button click
+  document.getElementById('telemetry-btn').addEventListener('click', async function() {
+    try {
+      const response = await eel.disable_telemetry()();
+      console.log("success" + response);
+      showMessage(response)
+    } catch (error) {
+      console.log("error: " + error);
+      showMessage("error");
+    }
+
   });
   
   // Turn Off Sleep Button
@@ -70,9 +77,7 @@ document.getElementById('data-collection-btn').addEventListener('click', functio
       showMessage("error");
     }
   });
-  
 
-  
   // Disable Lid Sleep Button
   document.getElementById('disable-lid-sleep-btn').addEventListener('click', async function() {
     try {
@@ -86,22 +91,43 @@ document.getElementById('data-collection-btn').addEventListener('click', functio
   });
   
   // Disable Automatic Updates Button
-  document.getElementById('disable-automatic-updates-btn').addEventListener('click', function() {
-    // Handle disable automatic updates button click
+  document.getElementById('disable-automatic-updates-btn').addEventListener('click', async function() {
+    try {
+      const response = await eel.disable_automatic_updates()();
+      console.log("success: " + response);
+      showMessage(response);
+    } catch (error) {
+      console.log("error: " + error);
+      showMessage("error");
+    }
   });
   
   // Disable Windows 11 Button
-  document.getElementById('disable-win11-btn').addEventListener('click', function() {
-    // Handle disable Windows 11 button click
+  document.getElementById('disable-win11-btn').addEventListener('click', async function() {
+    try {
+      const response = await eel.disable_win11()();
+      console.log("success: " + response);
+      showMessage(response);
+    } catch (error) {
+      console.log("error: " + error);
+      showMessage("error");
+    }// Handle disable Windows 11 button click
   });
   
   // Crack Windows Button
-  document.getElementById('crack-btn').addEventListener('click', function() {
-    // Handle crack Windows button click
+  document.getElementById('crack-btn').addEventListener('click', async function() {
+    try {
+      const response = await eel.windows_cracker()();
+      console.log("success: " + response);
+      showMessage(response);
+    } catch (error) {
+      console.log("error: " + error);
+      showMessage("error");
+    }// Handle disable Windows 11 button click
   });
   
   // Make Local Account Button
   document.getElementById('new-local-acc-btn').addEventListener('click', function() {
-    // Handle make local account button click
+    showMessage("error");// Handle make local account button click
   });
   
